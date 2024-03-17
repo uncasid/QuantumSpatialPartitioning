@@ -1,0 +1,7 @@
+singleton component SpatialHashTable {
+  dictionary<Int3, Node> Grid;
+  }
+
+struct Node { hash_set<entity_ref> Entities; }
+
+struct Int3 { short X; short Y; short Z; } 
