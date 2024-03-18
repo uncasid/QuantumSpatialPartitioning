@@ -1,0 +1,14 @@
+asset GridConfig;
+
+singleton component SpatialHashTable { dictionary<Int3, Node> Grid; asset_ref<GridConfig> GridConfig; }
+
+struct Node { hash_set<entity_ref> Entities; }
+
+struct Int3 { short X; short Y; short Z; } 
+
+component Ball 
+{ 
+  Int3 PrevPosition; 
+  hash_set<entity_ref> Neighbors;
+  player_ref Owner;
+}
