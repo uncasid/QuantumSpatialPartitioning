@@ -1,0 +1,6 @@
+﻿struct Int3
+{
+	short X;
+	short Y;
+	short Z; 
+} 

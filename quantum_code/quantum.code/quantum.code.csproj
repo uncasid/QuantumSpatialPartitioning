@@ -78,14 +78,21 @@
     <Compile Include="Core\Core.cs" />
     <Compile Include="Frame.User.cs" />
     <Compile Include="FrameContext.User.cs" />
+    <Compile Include="Int3\Int3.cs" />
     <Compile Include="RuntimeConfig.User.cs" />
     <Compile Include="RuntimePlayer.User.cs" />
     <Compile Include="SimulationConfig.User.cs" />
+    <Compile Include="SpatialHashv1\SpatialHashSystem.cs" />
     <Compile Include="SystemSetup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="db.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GameEntity.qtn" />
+    <None Include="Int3\Int3.qtn" />
+    <None Include="SpatialHashv1\SpatialHasv1.qtn" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
