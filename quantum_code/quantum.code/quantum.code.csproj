@@ -78,15 +78,27 @@
     <Compile Include="Core\Core.cs" />
     <Compile Include="Frame.User.cs" />
     <Compile Include="FrameContext.User.cs" />
+    <Compile Include="General\PlayerSpawnSystem.cs" />
     <Compile Include="RuntimeConfig.User.cs" />
     <Compile Include="RuntimePlayer.User.cs" />
     <Compile Include="SimulationConfig.User.cs" />
+    <Compile Include="SparseCollections\BallSystem.cs" />
+    <Compile Include="SparseCollections\GridConfig.cs" />
+    <Compile Include="SparseCollections\Int3.cs" />
+    <Compile Include="SparseCollections\PlayerActionsSystem.cs" />
+    <Compile Include="SparseCollections\SpatialHashSystem.cs" />
     <Compile Include="SystemSetup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="db.json" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="General\Input.qtn" />
+    <None Include="General\PlayerLink.qtn" />
+    <None Include="SparseCollections\Grid.qtn" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent Condition="'$(OS)' == 'Windows_NT'">"$(ProjectDir)..\..\tools\codegen_unity\quantum.codegen.unity.host.exe" "$(TargetDir)\quantum.code.dll" "$(ProjectDir)..\..\quantum_unity\Assets"</PostBuildEvent>

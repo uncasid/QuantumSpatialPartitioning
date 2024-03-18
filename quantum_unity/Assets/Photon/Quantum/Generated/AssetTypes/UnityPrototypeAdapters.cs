@@ -6,6 +6,64 @@
 using System;
 namespace Quantum.Prototypes.Unity {
   [System.SerializableAttribute()]
+  [Quantum.Prototypes.PrototypeAttribute(typeof(Quantum.Ball))]
+  public class Ball_Prototype : Quantum.PrototypeAdapter<Quantum.Prototypes.Ball_Prototype> {
+    public Quantum.Prototypes.Int3_Prototype PrevPosition;
+    [Quantum.Inspector.DynamicCollectionAttribute()]
+    [Quantum.LocalReference]
+    public global::EntityPrototype[] Neighbors = System.Array.Empty<global::EntityPrototype>();
+    public Quantum.PlayerRef Owner;
+
+    public sealed override Quantum.Prototypes.Ball_Prototype Convert(EntityPrototypeConverter converter) {
+      var result = new Quantum.Prototypes.Ball_Prototype();
+      result.PrevPosition = this.PrevPosition;
+      result.Neighbors = System.Array.ConvertAll(this.Neighbors, x => { converter.Convert(x, out Quantum.MapEntityId tmp); return tmp; });
+      result.Owner = this.Owner;
+      return result;
+    }
+  }
+  [System.SerializableAttribute()]
+  [Quantum.Prototypes.PrototypeAttribute(typeof(Quantum.SpatialHashTable))]
+  public class SpatialHashTable_Prototype : Quantum.PrototypeAdapter<Quantum.Prototypes.SpatialHashTable_Prototype> {
+    [Quantum.Inspector.DictionaryAttribute()]
+    [Quantum.Inspector.DynamicCollectionAttribute()]
+    public DictionaryEntry_Int3_Node_Prototype[] Grid = System.Array.Empty<DictionaryEntry_Int3_Node_Prototype>();
+    public Quantum.AssetRefGridConfig GridConfig;
+
+    public sealed override Quantum.Prototypes.SpatialHashTable_Prototype Convert(EntityPrototypeConverter converter) {
+      var result = new Quantum.Prototypes.SpatialHashTable_Prototype();
+      result.Grid = System.Array.ConvertAll(this.Grid, x => x.Convert(converter));
+      result.GridConfig = this.GridConfig;
+      return result;
+    }
+  }
+  [System.SerializableAttribute()]
+  [Quantum.Prototypes.PrototypeAttribute(typeof(System.Collections.Generic.KeyValuePair<Quantum.Int3, Quantum.Node>))]
+  public class DictionaryEntry_Int3_Node_Prototype : Quantum.PrototypeAdapter<Quantum.Prototypes.DictionaryEntry_Int3_Node_Prototype> {
+    public Quantum.Prototypes.Int3_Prototype Key;
+    public Node_Prototype Value;
+
+    public sealed override Quantum.Prototypes.DictionaryEntry_Int3_Node_Prototype Convert(EntityPrototypeConverter converter) {
+      var result = new Quantum.Prototypes.DictionaryEntry_Int3_Node_Prototype();
+      result.Key = this.Key;
+      result.Value = this.Value.Convert(converter);
+      return result;
+    }
+  }
+  [System.SerializableAttribute()]
+  [Quantum.Prototypes.PrototypeAttribute(typeof(Quantum.Node))]
+  public class Node_Prototype : Quantum.PrototypeAdapter<Quantum.Prototypes.Node_Prototype> {
+    [Quantum.Inspector.DynamicCollectionAttribute()]
+    [Quantum.LocalReference]
+    public global::EntityPrototype[] Entities = System.Array.Empty<global::EntityPrototype>();
+
+    public sealed override Quantum.Prototypes.Node_Prototype Convert(EntityPrototypeConverter converter) {
+      var result = new Quantum.Prototypes.Node_Prototype();
+      result.Entities = System.Array.ConvertAll(this.Entities, x => { converter.Convert(x, out Quantum.MapEntityId tmp); return tmp; });
+      return result;
+    }
+  }
+  [System.SerializableAttribute()]
   [Quantum.Prototypes.PrototypeAttribute(typeof(Quantum.PhysicsJoints3D))]
   public class PhysicsJoints3D_Prototype : Quantum.PrototypeAdapter<Quantum.Prototypes.PhysicsJoints3D_Prototype> {
     [Quantum.Inspector.DynamicCollectionAttribute()]

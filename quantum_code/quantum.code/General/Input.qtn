@@ -1,0 +1,7 @@
+input
+{
+  button SpawnBall;
+  button Query;
+  button Jump;
+  FPVector2 Direction;
+}

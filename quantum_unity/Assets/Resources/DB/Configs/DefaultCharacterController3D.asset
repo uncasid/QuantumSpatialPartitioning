@@ -34,22 +34,22 @@ MonoBehaviour:
       RawValue: 6553
     MaxContacts: 8
     LayerMask:
-      BitMask: -1
+      BitMask: 55
     UseManifoldNormal: 0
     AirControl: 1
     Acceleration:
-      RawValue: 1638400
+      RawValue: 3932160
     Braking:
       RawValue: 655360
     BaseJumpImpulse:
-      RawValue: 393216
+      RawValue: 2621440
     MaxSpeed:
-      RawValue: 196608
+      RawValue: 3276800
     Gravity:
       X:
         RawValue: 0
       Y:
-        RawValue: -655360
+        RawValue: -1310720
       Z:
         RawValue: 0
     MaxSlope:
